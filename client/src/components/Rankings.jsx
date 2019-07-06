@@ -1,8 +1,8 @@
 import React from 'react';
 import './styling.css';
-import totalScore from './totalscore.png'
-import StarFill from './starfillup.png'
-import ThreeCharts from './threeCharts.png'
+import totalScore from './images/totalscore.png'
+import StarFill from './images/starfillup.png'
+import ThreeCharts from './images/threeCharts.png'
 
 
 const Rankings = () => (
