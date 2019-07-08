@@ -46,7 +46,7 @@
       /* float: left; */
       font-size: 25px;
       font-weight: bold;
-      color: #B6B0B0;
+      color: black;
       padding-top: 40px;
       padding-bottom: 10px;
       padding-left: 0px;
@@ -54,35 +54,63 @@
 
   #subtitle {
     /* float: left; */
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
-    color: #B6B0B0;
+    color: black;
     /* padding-bottom: 10px; */
     padding-left: 0px;
 }
 
+/* review styling */
+
   .item {
-    /* border: 1px solid rgba(0, 0, 0, 0.8); */
+    border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 20px;
   }
 
 
+  .reviewContainer {
+    display: grid;
+    grid-template-columns: .6fr 2fr;
+    padding: 10px;
+    line-height: 40px; 
+  }
+
+  .user {
+    /* border: 1px solid rgba(0, 0, 0, 0.8); */
+    line-height: 20px; 
+  }
+
+  .review {
+    /* border: 1px solid rgba(0, 0, 0, 0.8); */
+    line-height: px; 
+    padding-bottom: 30px
+  }
+  .title {
+    line-height: 40px; 
+    font-size: 22px;
+    color: #B6B0B0;
+  }
+
+a {
+  color:#5A82C7;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none
+}
+
+
+/* styling for graphical elements */
 #total {
-  width: 50%
+  width: 60%
 }
 #starFill {
-  width: 50%;
+  width: 60%;
   padding-left: 50px
 }
 
 #threePie {
   padding-top: 40px;
   padding-bottom: 10px;
-  width: 80%
+  width: 100%
 }
-
-  .graphics {
-    /* border: 1px solid rgba(0, 0, 0, 0.8); */
-    padding: 20px;
-  }
-  

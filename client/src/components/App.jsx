@@ -1,16 +1,30 @@
 import React from 'react';
+import axios from 'axios'
 import './styling.css';
 import Button from './Button.jsx'
 import Rankings from './Rankings.jsx'
 import SeeReviews from './seeReviews.jsx'
+import Reviews from './reviews.jsx'
 
 class App extends React.Component {
   constructor () {
     super();
     this.state = {
-      id: 0
+      id: 0,
+      reviews: []
     }
-    //bind functions here
+    this.componentDidMount = this.componentDidMount.bind(this)
+  }
+
+  componentDidMount() {
+    const self = this
+    axios.get('/test')
+      .then(function (response) {
+      self.setState({ reviews: response.data})
+    })
+      .catch(function (error) {
+      console.log(error);
+    });
   }
 
 
@@ -19,7 +33,7 @@ class App extends React.Component {
       <div>
       <div className="headcontainer">
       <div id="title" >Ratings and Reviews</div>
-      <div className="item"></div>
+      <div></div>
       <div> <Button /></div>
       </div>
       <hr></hr>
@@ -28,13 +42,11 @@ class App extends React.Component {
       <hr></hr>
       <div className="container">
       <div id="subtitle" >Most Relevant Reviews</div>
-      <div className="item"></div>
-      <div > <SeeReviews /></div>
-      <div className="item">6</div>
-      <div className="item">7</div>
-      <div className="item">8</div>
-      <div className="item">9</div>
+      <div></div>
+      <SeeReviews />
       </div>
+      <br></br>
+      <Reviews list={this.state.reviews}/>
       </div>
     )
   }
