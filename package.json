@@ -1,7 +1,7 @@
 {
   "name": "fullstack-boilerplate",
   "version": "1.0.0",
-  "description": "",
+  "description": "To start everything",
   "main": "index.js",
   "scripts": {
     "react-dev": "webpack -d --watch",

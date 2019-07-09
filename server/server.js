@@ -29,8 +29,23 @@ app.get('/test', function (req, res) {
   })
 })
 
+app.post('/test', function (req, res) {
+  const review = req.body
+  db.addOne(review, (err, result) => {
+    if (err) {
+      res.send(`couldn't get`)
+      console.log(`we didn't get it`)
+    } else {
+      res.send(result)
+      console.log('we got it')
+    }
+  })
+})
+
 
 
 
 
 app.listen(port, () => console.log(`Server is running on ${port}`));
+
+
