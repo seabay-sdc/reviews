@@ -6,6 +6,7 @@ const app = express();
 const port = process.env.PORT || 3004;
 const bodyParser = require("body-parser");
 const path = require('path');
+const db = require("../db/config.js")
 
 
 app.use(cors());
@@ -16,10 +17,17 @@ app.use(express.static('client/dist'));
 
 
 
-
-app.get('/', (req, res) => {
-  res.status(200).send('Get request successful!');
-});
+app.get('/test', function (req, res) {
+  db.getAll((err, result) => {
+    if (err) {
+      res.send(`couldn't get`)
+      console.log(`we didn't get it`)
+    } else {
+      res.send(result)
+      console.log('we got it')
+    }
+  })
+})
 
 
 
