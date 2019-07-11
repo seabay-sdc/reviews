@@ -1,0 +1,10 @@
+import React from 'react';
+import './styling.css';
+
+const SeeReviews = () => React.createElement("div", null, React.createElement("button", {
+  id: "expandReviews",
+  type: "button"
+}, "See All Reviews"));
+
+export default SeeReviews;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2NsaWVudC9zcmMvY29tcG9uZW50cy9zZWVSZXZpZXdzLmpzeCJdLCJuYW1lcyI6WyJSZWFjdCIsIlNlZVJldmlld3MiXSwibWFwcGluZ3MiOiJBQUFBLE9BQU9BLEtBQVAsTUFBa0IsT0FBbEI7QUFDQSxPQUFPLGVBQVA7O0FBR0EsTUFBTUMsVUFBVSxHQUFHLE1BQ2YsaUNBQ0k7QUFBUSxFQUFBLEVBQUUsRUFBQyxlQUFYO0FBQTJCLEVBQUEsSUFBSSxFQUFDO0FBQWhDLHFCQURKLENBREo7O0FBT0UsZUFBZUEsVUFBZiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5pbXBvcnQgJy4vc3R5bGluZy5jc3MnO1xuXG5cbmNvbnN0IFNlZVJldmlld3MgPSAoKSA9PiAoXG4gICAgPGRpdj5cbiAgICAgICAgPGJ1dHRvbiBpZD1cImV4cGFuZFJldmlld3NcIiB0eXBlPVwiYnV0dG9uXCI+U2VlIEFsbCBSZXZpZXdzPC9idXR0b24+XG4gICAgPC9kaXY+XG4gICk7XG5cblxuICBleHBvcnQgZGVmYXVsdCBTZWVSZXZpZXdzXG4gIFxuIl19

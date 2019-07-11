@@ -16,6 +16,16 @@ const getAll = (callback) => {
   })
 }
 
+const getById = (callback) => {
+  db.collection("reviews").find({id:2}).toArray((err, result) => {
+    if (err) {
+      callback(err)
+    } else {
+      callback(null, result)
+    }
+  })
+}
+
 
 const addOne = (review, callback) => {
   console.log(review)
@@ -28,10 +38,23 @@ const addOne = (review, callback) => {
   })
 }
 
+const addAlot = (review, callback) => {
+  console.log(review)
+  db.collection("reviews").insertMany(review, (err, result) => {
+    if (err) {
+      callback(err)
+    } else {
+      callback(null, true)
+    }
+  })
+}
+
 
 module.exports = {
-  getAll : getAll,
-  addOne : addOne
+  getAll,
+  addOne,
+  addAlot,
+  getById
 }
 
 
@@ -50,3 +73,13 @@ module.exports = {
 //   title: "I Hate IT!",
 //   review: "I've never bought such a shitty item, I will not be buying again"
 //   })
+
+// Note: To complete installation, ensure `eb` is in PATH. You can ensure this by executing:
+
+// 1. Bash:
+
+//    echo 'export PATH="/Users/mileszander/.ebcli-virtual-env/executables:$PATH"' >> ~/.bash_profile && source ~/.bash_profile
+
+// 2. Zsh:
+
+//    echo 'export PATH="/Users/mileszander/.ebcli-virtual-env/executables:$PATH"' >> ~/.zshenv && source ~/.zshenv
