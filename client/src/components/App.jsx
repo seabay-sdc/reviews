@@ -10,21 +10,26 @@ class App extends React.Component {
   constructor () {
     super();
     this.state = {
-      id: 0,
+      id: 5,
       reviews: []
     }
   }
 
   componentDidMount() {
     const self = this
-    axios.get('/id:5')
+    axios.get(`/id/${self.state.id}`)
       .then(function (response) {
       self.setState({ reviews: response.data})
     })
       .catch(function (error) {
-      console.log(error);
-    });
+      console.log(error)
+    })
+    // document.addEventListener('testEvent', data => {
+    //   console.log('Item view received this id: ', data)
+    // });
   }
+
+
 
   // setCurrentItem (item) {
   //   // create a detail object to pass to your event with

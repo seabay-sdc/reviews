@@ -5,8 +5,8 @@ const faker = require('faker');
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const PORT = 3004;
-const HOST = '0.0.0.0';
+const PORT = process.env.SERVER_PORT
+const HOST = process.env.SERVER_HOST
 const bodyParser = require("body-parser");
 const path = require('path');
 const db = require("../db/config.js")
@@ -49,8 +49,9 @@ app.get('/test', function (req, res) {
   })
 })
 
-app.get('/id:5', function (req, res) {
-  db.getById((err, result) => {
+app.get('/id/:id', function (req, res) {
+  let idNum = parseInt(req.params.id)
+  db.getById(idNum, (err, result) => {
     if (err) {
       res.send(`couldn't get`)
       console.log(`we didn't get it`)
@@ -61,6 +62,11 @@ app.get('/id:5', function (req, res) {
     }
   })
 })
+
+// app.get('/id/:id', function (req, res) {
+//   console.log(req.params)
+//   res.send('thanks')
+// })
 
 
 app.post('/test', function (req, res) {

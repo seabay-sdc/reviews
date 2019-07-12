@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const connectionString = "mongodb+srv://root:root@reviews-y8owi.mongodb.net/test?retryWrites=true&w=majority"
-mongoose.connect(connectionString, { useNewUrlParser: true })
+// const connectionString = {process.env.DB_URI}
+mongoose.connect(process.env.DB_URI, { useNewUrlParser: true })
 
 
 const db = mongoose.connection;
@@ -16,8 +16,8 @@ const getAll = (callback) => {
   })
 }
 
-const getById = (callback) => {
-  db.collection("reviews").find({id:2}).toArray((err, result) => {
+const getById = (idNum,callback) => {
+  db.collection("reviews").find({id:idNum}).toArray((err, result) => {
     if (err) {
       callback(err)
     } else {
