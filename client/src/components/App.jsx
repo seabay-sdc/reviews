@@ -13,12 +13,11 @@ class App extends React.Component {
       id: 0,
       reviews: []
     }
-    this.componentDidMount = this.componentDidMount.bind(this)
   }
 
   componentDidMount() {
     const self = this
-    axios.get('/test')
+    axios.get('/id:5')
       .then(function (response) {
       self.setState({ reviews: response.data})
     })
@@ -26,6 +25,33 @@ class App extends React.Component {
       console.log(error);
     });
   }
+
+  // setCurrentItem (item) {
+  //   // create a detail object to pass to your event with
+  //   // your data as the value
+  //   const detail = { detail: item }
+    
+  //   // create a custom event with an agreed-upon event
+  //   // name (in this case, 'setCurrentItem')
+  //     const event = new CustomEvent('setCurrentItem', detail);
+    
+  //   // add an event dispatcher to the document object, so
+  //   // others can 'listen' for this event no matter who
+  //   // dispatches it
+  //     document.dispatchEvent(event);
+  // }
+
+
+  // componentDidMount () {
+  //   // create a callback that executes some behavior when
+  //   // the event fires
+  //   const callback = (data) => this.setState({ foo: data });
+    
+  //   // create an event listener that matches the event
+  //   // name you're listening for on the document
+  //     document.addEventListener('setCurrentItem', callback);
+  // }
+
 
 
   render () {

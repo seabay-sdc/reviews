@@ -1,21 +1,23 @@
 const mongoose = require('mongoose');
+const connectionString = "mongodb+srv://root:root@reviews-y8owi.mongodb.net/test?retryWrites=true&w=majority"
+mongoose.connect(connectionString, { useNewUrlParser: true })
 
-mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
 
 const db = mongoose.connection;
 
-// db.collection("test").findOne({}, function(err, result) {
-//   if (err) throw err;
-//   console.log(result);
-//   db.close();
-// });
-
-
-
-
 
 const getAll = (callback) => {
-  db.collection("test").find({}).toArray((err, result) => {
+  db.collection("reviews").find({}).toArray((err, result) => {
+    if (err) {
+      callback(err)
+    } else {
+      callback(null, result)
+    }
+  })
+}
+
+const getById = (callback) => {
+  db.collection("reviews").find({id:2}).toArray((err, result) => {
     if (err) {
       callback(err)
     } else {
@@ -25,34 +27,38 @@ const getAll = (callback) => {
 }
 
 
+const addOne = (review, callback) => {
+  console.log(review)
+  db.collection("reviews").insertOne(review, (err, result) => {
+    if (err) {
+      callback(err)
+    } else {
+      callback(null, true)
+    }
+  })
+}
 
-
-// MongoClient.connect(url, function(err, db) {
-//   if (err) throw err;
-//   var dbo = db.db("mydb");
-//   dbo.collection("customers").find({}).toArray(function(err, result) {
-//     if (err) throw err;
-//     console.log(result);
-//     db.close();
-//   });
-// });
-
-
-module.exports = {
-  getAll : getAll,
-  // getOne : getOne
+const addAlot = (review, callback) => {
+  console.log(review)
+  db.collection("reviews").insertMany(review, (err, result) => {
+    if (err) {
+      callback(err)
+    } else {
+      callback(null, true)
+    }
+  })
 }
 
 
-// { reviews: [
-//     {id: 0,
-//     name: "Mike",
-//     date: "June 13, 2019",
-//     title: "What a deal!!!!",
-//     review: "I love'd it sooooooo much, I'd buy it again if it didn't make me so poor"
-//     }
+module.exports = {
+  getAll,
+  addOne,
+  addAlot,
+  getById
+}
 
-// db.test.insert({
+
+// {
 // id: 1,
 // name: "Jane",
 // date: "June 01, 2019",
@@ -60,10 +66,20 @@ module.exports = {
 // review: "I love'd it sooooooo much, I'd buy it again if it didn't make me so poor"
 // })
 
-// db.test.insert({
+//  {
 //   id: 0,
 //   name: "Mike",
 //   date: "May 17, 2019",
 //   title: "I Hate IT!",
 //   review: "I've never bought such a shitty item, I will not be buying again"
 //   })
+
+// Note: To complete installation, ensure `eb` is in PATH. You can ensure this by executing:
+
+// 1. Bash:
+
+//    echo 'export PATH="/Users/mileszander/.ebcli-virtual-env/executables:$PATH"' >> ~/.bash_profile && source ~/.bash_profile
+
+// 2. Zsh:
+
+//    echo 'export PATH="/Users/mileszander/.ebcli-virtual-env/executables:$PATH"' >> ~/.zshenv && source ~/.zshenv

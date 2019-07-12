@@ -1,0 +1,10 @@
+import React from 'react';
+import './styling.css';
+
+const Button = () => React.createElement("div", null, React.createElement("button", {
+  id: "button",
+  type: "button"
+}, "Write Review"));
+
+export default Button;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2NsaWVudC9zcmMvY29tcG9uZW50cy9CdXR0b24uanN4Il0sIm5hbWVzIjpbIlJlYWN0IiwiQnV0dG9uIl0sIm1hcHBpbmdzIjoiQUFBQSxPQUFPQSxLQUFQLE1BQWtCLE9BQWxCO0FBQ0EsT0FBTyxlQUFQOztBQUdBLE1BQU1DLE1BQU0sR0FBRyxNQUNYLGlDQUNJO0FBQVEsRUFBQSxFQUFFLEVBQUMsUUFBWDtBQUFvQixFQUFBLElBQUksRUFBQztBQUF6QixrQkFESixDQURKOztBQU9FLGVBQWVBLE1BQWYiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnO1xuaW1wb3J0ICcuL3N0eWxpbmcuY3NzJztcblxuXG5jb25zdCBCdXR0b24gPSAoKSA9PiAoXG4gICAgPGRpdj5cbiAgICAgICAgPGJ1dHRvbiBpZD1cImJ1dHRvblwiIHR5cGU9XCJidXR0b25cIj5Xcml0ZSBSZXZpZXc8L2J1dHRvbj5cbiAgICA8L2Rpdj5cbiAgKTtcblxuXG4gIGV4cG9ydCBkZWZhdWx0IEJ1dHRvbiAiXX0=
