@@ -10,14 +10,14 @@ class App extends React.Component {
   constructor () {
     super();
     this.state = {
-      id: 0,
+      id: 5,
       reviews: []
     }
   }
 
   componentDidMount() {
     const self = this
-    axios.get(`/id/90`)
+    axios.get(`/id/${self.state.id}`)
       .then(function (response) {
       self.setState({ reviews: response.data})
     })
