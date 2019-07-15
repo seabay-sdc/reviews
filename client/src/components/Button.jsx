@@ -4,7 +4,7 @@ import './styling.css';
 
 const Button = () => (
     <div>
-        <button id="button" type="button">Write Review</button>
+        <button id="buttonR" type="button">Write Review</button>
     </div>
   );
 

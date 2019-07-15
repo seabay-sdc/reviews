@@ -1,13 +1,13 @@
 
 
-.headcontainer {
+.headcontainerR {
   display: grid;
   grid-template-columns: auto auto auto;
   grid-template-rows: 60px;
   padding: 10px;
 }
 
-.container {
+.containerR {
     display: grid;
     grid-template-columns: auto auto auto;
     padding: 10px;
@@ -15,7 +15,7 @@
   }
 
 
-  #button {
+  #buttonR {
     -webkit-border-radius: 3;
     -moz-border-radius: 3;
     border-radius: 3px;
@@ -29,7 +29,7 @@
     float:right
   }
 
-  #expandReviews {
+  #expandReviewsR {
 
     border-radius: 3px;
     font-family: Georgia;
@@ -43,7 +43,7 @@
 
 
   
-  #title {
+  #titleR {
       /* float: left; */
       font-size: 25px;
       font-weight: bold;
@@ -53,7 +53,7 @@
       padding-left: 0px;
   }
 
-  #subtitle {
+  #subtitleR {
     /* float: left; */
     font-size: 18px;
     font-weight: bold;
@@ -77,23 +77,23 @@
     line-height: 40px; 
   }
 
-  .user {
+  .userR {
     /* border: 1px solid rgba(0, 0, 0, 0.8); */
     line-height: 20px; 
   }
 
-  .review {
+  .reviewR {
     /* border: 1px solid rgba(0, 0, 0, 0.8); */
     line-height: px; 
     padding-bottom: 30px
   }
-  .title {
+  .titleR {
     line-height: 40px; 
     font-size: 22px;
     color: #B6B0B0;
   }
 
-a {
+.linksR {
   color:#5A82C7;
   font-size: 14px;
   font-weight: bold;
@@ -102,15 +102,15 @@ a {
 
 
 /* styling for graphical elements */
-#total {
+#totalR {
   width: 60%
 }
-#starFill {
+#starFillR {
   width: 60%;
   padding-left: 50px
 }
 
-#threePie {
+#threePieR {
   padding-top: 40px;
   padding-bottom: 10px;
   width: 100%
