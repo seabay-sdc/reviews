@@ -17,7 +17,7 @@ class App extends React.Component {
 
   componentDidMount() {
     const self = this
-    axios.get(`/id/${self.state.id}`)
+    axios.get(`http://ec2-52-15-94-164.us-east-2.compute.amazonaws.com:3004/id/${self.state.id}`)
       .then(function (response) {
       self.setState({ reviews: response.data})
     })

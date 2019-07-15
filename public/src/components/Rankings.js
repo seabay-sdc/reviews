@@ -1,5 +1,6 @@
 import React from 'react';
 import './styling.css';
+
 import totalScore from './images/totalscore.png';
 import StarFill from './images/starfillup.png';
 import ThreeCharts from './images/threeCharts.png';
