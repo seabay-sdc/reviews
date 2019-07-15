@@ -62,8 +62,8 @@ class App extends React.Component {
   render () {
     return (
       <div>
-      <div className="headcontainer">
-      <div id="title" >Ratings and Reviews</div>
+      <div className="headcontainerR">
+      <div id="titleR" >Ratings and Reviews</div>
       <div></div>
       <div> <Button /></div>
       </div>
@@ -71,8 +71,8 @@ class App extends React.Component {
       <br></br>
       <div><Rankings /></div>
       <hr></hr>
-      <div className="container">
-      <div id="subtitle" >Most Relevant Reviews</div>
+      <div className="containerR">
+      <div id="subtitleR" >Most Relevant Reviews</div>
       <div></div>
       <SeeReviews />
       </div>

@@ -4,7 +4,7 @@ import './styling.css';
 
 const SeeReviews = () => (
     <div>
-        <button id="expandReviews" type="button">See All Reviews</button>
+        <button id="expandReviewsR" type="button">See All Reviews</button>
     </div>
   );
 
