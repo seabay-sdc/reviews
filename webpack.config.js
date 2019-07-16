@@ -1,6 +1,6 @@
 module.exports = {
   entry: __dirname + '/client/src/index.jsx',
-  mode: process.env.NODE_ENV,
+  mode: "production",
   module: {
     rules: [
       {
@@ -22,7 +22,6 @@ module.exports = {
       }
     ]
   },
-  
   output: {
     path: __dirname + '/client/dist',
     filename: 'bundle.js',

@@ -80,7 +80,7 @@ const customStyles = {
                 this.props.handleSubmit(this.state.review, this.state.user, this.state.title) 
                 .then(() => this.closeModal() )    
             }}>
-            {/* {this.props.closeModal(this.closeModal)} */}
+
               <input id="userName" placeholder="User Name" value={this.state.user} onChange={this.handleUser} />
               <br></br>
               <input id="userName" placeholder="Title" value={this.state.title} onChange={this.handleTitle} />
