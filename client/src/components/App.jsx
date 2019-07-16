@@ -12,12 +12,10 @@ class App extends React.Component {
     super();
     this.state = {
       id: 5,
-      reviews: [],
-      show: false
+      reviews: []
     }
     this.getItem = this.getItem.bind(this)
-    this.showModal = this.showModal.bind(this)
-    this.hideModal = this.hideModal.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -36,6 +34,33 @@ class App extends React.Component {
   }
 
 
+  handleSubmit (newReview,newUser,newTitle) {
+  return event => {
+    event.preventDefault()
+    const d = new Date();
+    const presDate = d.toLocaleDateString();
+    const toSend = {
+      id: this.state.id,
+      title: newTitle,
+      review: newReview,
+      name: newUser,
+      date: presDate
+      }
+    this.postReview(toSend)
+    }
+  }
+
+postReview(newRev) {
+    axios.post(`http://ec2-52-15-94-164.us-east-2.compute.amazonaws.com:3004/newReview`,{
+    newRev})
+    .then(function(response){
+      console.log('sent')
+    }) 
+    .catch(function (error) {
+      console.log(error)
+    })
+}
+
   getItem() {
     const self = this
     axios.get(`http://ec2-52-15-94-164.us-east-2.compute.amazonaws.com:3004/id/${self.state.id}`)
@@ -47,13 +72,6 @@ class App extends React.Component {
   })
   }
 
-  showModal () {
-    this.setState({ show: true });
-  }
-
-  hideModal () {
-    this.setState({ show: false });
-  }
 
 
 
@@ -63,8 +81,8 @@ class App extends React.Component {
       <div className="headcontainerR">
       <div id="titleR" >Ratings and Reviews</div>
       <div></div>
-      {/* <div> <button type="button" onClick={this.showModal}></button> <WriteRev show={this.state.show} handleClose={this.hideModal}/></div> */}
-  
+      <div> <WriteRev show={this.state.show} handleClose={this.hideModal} 
+      handleSubmit={this.handleSubmit}/></div>
       </div>
       <hr></hr>
       <br></br>

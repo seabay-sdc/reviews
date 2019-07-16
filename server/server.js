@@ -63,14 +63,11 @@ app.get('/id/:id', function (req, res) {
   })
 })
 
-// app.get('/id/:id', function (req, res) {
-//   console.log(req.params)
-//   res.send('thanks')
-// })
 
 
-app.post('/test', function (req, res) {
-  const review = req.body
+app.post('/newReview', function (req, res) {
+  const review = req.body.newRev
+  // console.log(review)
   db.addOne(review, (err, result) => {
     if (err) {
       res.send(`couldn't get`)

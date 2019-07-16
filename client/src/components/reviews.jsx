@@ -17,7 +17,7 @@ const Reviews = (props) => {
             </div>
             <div className="reviewR">
                 <div className="titleR"> {review.title} </div>
-                <div>{review.review} </div>
+                <p className="reviewPara">{review.review} </p>
             </div>
             </>
             )
