@@ -1,6 +1,7 @@
 import React from 'react';
 import './styling.css';
 import Modal from 'react-modal';
+import { throws } from 'assert';
 
 const customStyles = {
     content : {
@@ -75,14 +76,18 @@ const customStyles = {
             <div ref={subtitle => this.subtitle = subtitle}></div>
             <center><h2 id="newReviewTitle" >Write Review</h2></center>
             <br></br>
-            <form onSubmit={this.props.handleSubmit(this.state.review, this.state.user, this.state.title)}>
+            <form onSubmit={() => {
+                this.props.handleSubmit(this.state.review, this.state.user, this.state.title) 
+                .then(() => this.closeModal() )    
+            }}>
+            {/* {this.props.closeModal(this.closeModal)} */}
               <input id="userName" placeholder="User Name" value={this.state.user} onChange={this.handleUser} />
               <br></br>
               <input id="userName" placeholder="Title" value={this.state.title} onChange={this.handleTitle} />
             <br></br>
               <input id="reviewForm" placeholder="Review..." value={this.state.review} onChange={this.handleReview} />
             <br></br>
-            <center><input type="submit" value="Submit" /></center>
+            <center><input type="submit" value="Submit"/></center>
             </form>
           </Modal>
         </div>

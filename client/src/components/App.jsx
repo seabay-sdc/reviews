@@ -11,8 +11,9 @@ class App extends React.Component {
   constructor () {
     super();
     this.state = {
-      id: 5,
-      reviews: []
+      id: 0,
+      reviews: [],
+      showModal: false
     }
     this.getItem = this.getItem.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -35,7 +36,6 @@ class App extends React.Component {
 
 
   handleSubmit (newReview,newUser,newTitle) {
-  return event => {
     event.preventDefault()
     const d = new Date();
     const presDate = d.toLocaleDateString();
@@ -46,12 +46,16 @@ class App extends React.Component {
       name: newUser,
       date: presDate
       }
-    this.postReview(toSend)
-    }
+    return this.postReview(toSend) 
+      .then(() => {
+        this.getItem();
+      })
   }
 
-postReview(newRev) {
-    axios.post(`http://ec2-52-15-94-164.us-east-2.compute.amazonaws.com:3004/newReview`,{
+
+
+ postReview(newRev) {
+    return axios.post(`http://ec2-52-15-94-164.us-east-2.compute.amazonaws.com:3004/newReview`,{
     newRev})
     .then(function(response){
       console.log('sent')
@@ -82,7 +86,7 @@ postReview(newRev) {
       <div id="titleR" >Ratings and Reviews</div>
       <div></div>
       <div> <WriteRev show={this.state.show} handleClose={this.hideModal} 
-      handleSubmit={this.handleSubmit}/></div>
+      handleSubmit={this.handleSubmit} /></div>
       </div>
       <hr></hr>
       <br></br>
