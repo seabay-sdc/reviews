@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios'
+import Modal from 'react-modal';
 import './styling.css';
-import Button from './Button.jsx'
+import WriteRev from './WriteReview.jsx'
 import Rankings from './Rankings.jsx'
 import SeeReviews from './seeReviews.jsx'
 import Reviews from './reviews.jsx'
@@ -11,9 +12,12 @@ class App extends React.Component {
     super();
     this.state = {
       id: 5,
-      reviews: []
+      reviews: [],
+      show: false
     }
     this.getItem = this.getItem.bind(this)
+    this.showModal = this.showModal.bind(this)
+    this.hideModal = this.hideModal.bind(this)
   }
 
   componentDidMount() {
@@ -26,20 +30,29 @@ class App extends React.Component {
       console.log(error)
     })
     document.addEventListener('setCurrentItem', data => {
-      self.setState({id : data.detail.id}) 
+      self.setState({id : data.detail.id})
+      this.getItem()
     });
-    self.getItem()
   }
 
 
   getItem() {
-    axios.get(`http://ec2-52-15-94-164.us-east-2.compute.amazonaws.com:3004/id/${this.state.id}`)
+    const self = this
+    axios.get(`http://ec2-52-15-94-164.us-east-2.compute.amazonaws.com:3004/id/${self.state.id}`)
     .then(function (response) {
-    this.setState({ reviews: response.data})
+    self.setState({ reviews: response.data})
   })
     .catch(function (error) {
     console.log(error)
   })
+  }
+
+  showModal () {
+    this.setState({ show: true });
+  }
+
+  hideModal () {
+    this.setState({ show: false });
   }
 
 
@@ -50,7 +63,8 @@ class App extends React.Component {
       <div className="headcontainerR">
       <div id="titleR" >Ratings and Reviews</div>
       <div></div>
-      <div> <Button /></div>
+      {/* <div> <button type="button" onClick={this.showModal}></button> <WriteRev show={this.state.show} handleClose={this.hideModal}/></div> */}
+  
       </div>
       <hr></hr>
       <br></br>
