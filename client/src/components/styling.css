@@ -63,14 +63,14 @@
 }
 
 /* review styling */
-
+/* 
   .item {
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 20px;
-  }
+  } */
 
 
-  .reviewContainer {
+  .reviewContainerR {
     display: grid;
     grid-template-columns: .6fr 2fr;
     padding: 10px;
@@ -115,3 +115,6 @@
   padding-bottom: 10px;
   width: 100%
 }
+
+
+
