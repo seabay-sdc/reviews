@@ -15,33 +15,49 @@
   }
 
 
-  #buttonR {
-    -webkit-border-radius: 3;
-    -moz-border-radius: 3;
-    border-radius: 3px;
-    font-family: Georgia;
-    color: #424785;
-    font-size: 16px;
-    background: #ffffff;
-    padding: 10px 20px 10px 20px;
-    border: solid #f0f0f0 2px;
-    text-decoration: none;
-    float:right
+  /* all my button CSS */
+  #buttonTile {
+    padding-top: 40px;
+    padding-bottom: 10px
   }
 
-  #expandReviewsR {
-
+  #buttonR {
     border-radius: 3px;
     font-family: Georgia;
     color: #424785;
     font-size: 14px;
     background: #ffffff;
-    padding: 10px 20px 10px 20px;
+    padding: 5px 10px 5px 10px;
     text-decoration: none;
     float:right
   }
 
+  #reviewForm {
+    width: 500px;
+    height: 5em;
+  }
 
+  #newReviewTitle {
+    color: #424785;
+    font-size: 18px;
+    font-family: Georgia
+  }
+
+  #submitButton {
+    margin: auto;
+    width: 25%
+  }
+
+  #expandReviewsR {
+    border-radius: 3px;
+    font-family: Georgia;
+    color: #424785;
+    font-size: 14px;
+    background: #ffffff;
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+    float:right
+  }
   
   #titleR {
       /* float: left; */
@@ -63,11 +79,12 @@
 }
 
 /* review styling */
-/* 
-  .item {
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
-  } */
+
+  .reviewPara{
+    line-height: 20px;
+    font-family: Georgia;
+
+  }
 
 
   .reviewContainerR {
