@@ -86,7 +86,6 @@
 
   }
 
-
   .reviewContainerR {
     display: grid;
     grid-template-columns: .6fr 2fr;
@@ -119,12 +118,57 @@
 
 
 /* styling for graphical elements */
+
+.reviewSumR {
+  display: grid;
+  grid-template-columns: .75fr .10fr 1fr .10fr 1fr;
+  line-height: 20px; 
+  border: 1px solid black; 
+  grid-template-rows: auto;
+  display: grid;
+  height: auto;
+  grid-template-rows: auto;
+}
+
+.oneColR {
+  border: 1px solid black; 
+  margin-right: auto;
+  margin: 1px
+}
+
+#numAvg {
+  font-size: 64px;
+  text-align: center;
+  line-height: 100%;
+  color: #555;
+  font-weight: 100;
+  font-family: Courier New;
+}
+
+#reactStars {
+  padding-left: 30%;
+}
+
+/* the five bars rendering the total amount votes per count */
+
+#graphBarsR {
+  line-height: 10px;
+  padding: 15px
+}
+
+.pbarR {
+  background-color: #ECEBEB !important
+}
+.progress-bar-pbar {
+  background-color: #B6B0B0 !important;
+  color: #B6B0B0 !important;
+}
+
 #totalR {
   width: 60%
 }
 #starFillR {
   width: 60%;
-  padding-left: 50px
 }
 
 #threePieR {

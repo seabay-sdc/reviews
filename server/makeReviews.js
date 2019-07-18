@@ -8,15 +8,31 @@ const makeData = (callback) => {
     let hold = {}
     hold["id"] = i
     hold["name"] = faker.name.findName();
-    let date = faker.date.past()
-    date = JSON.stringify(date)
-    hold["date"] = date.slice(1,11)
+    hold["date"] = dateMaker()
     hold["title"] = faker.company.catchPhrase()
-    hold["review"] = faker.company.catchPhraseNoun() + faker.company.catchPhraseAdjective() +
-    faker.company.bs() + faker.company.bsAdjective()
+    hold["score"] = randomNum()
+    hold["review"] = faker.company.catchPhraseAdjective() + " " + faker.company.catchPhraseNoun() + " " +
+    faker.company.bs() + " " + faker.company.bsAdjective()
     data.push(hold)
   }
   callback(null, data)
+}
+
+function dateMaker () {
+  let date = faker.date.past()
+  date = JSON.stringify(date)
+  date = date.slice(1,11)
+  const arr = date.split('-')
+  return arr[1]+"/"+arr[2]+"/"+arr[0]
+}
+
+function randomNum () {
+  const num = Math.round(Math.random()*5)
+  if (num !==0 ) {
+    return num
+  } else {
+    return 1;
+  }
 }
 
 module.exports = {

@@ -21,21 +21,21 @@ app.use(express.static('client/dist'));
 
 
 
-// app.get('/makedata', function (req, res) {
-//   let allReviews
-//   data.makeData((err, result) => {
-//     allReviews = result
-//   })
-//     db.addAlot(allReviews, (err, result) => {
-//       if (err) {
-//         res.send(`couldn't get`)
-//         console.log(`we didn't get it`)
-//       } else {
-//         res.send(result)
-//         console.log('we got it')
-//       }
-//     })
-// })
+app.get('/makedata', function (req, res) {
+  let allReviews
+  data.makeData((err, result) => {
+    allReviews = result
+  })
+    db.addAlot(allReviews, (err, result) => {
+      if (err) {
+        res.send(`couldn't get`)
+        console.log(`we didn't get it`)
+      } else {
+        res.send(result)
+        console.log('we got it')
+      }
+    })
+})
 
 app.get('/test', function (req, res) {
   db.getAll((err, result) => {

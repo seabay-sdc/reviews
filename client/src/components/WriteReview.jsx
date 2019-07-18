@@ -2,6 +2,7 @@ import React from 'react';
 import './styling.css';
 import Modal from 'react-modal';
 import { throws } from 'assert';
+import ReactStars from 'react-stars'
 
 const customStyles = {
     content : {
@@ -14,7 +15,6 @@ const customStyles = {
     }
   };
    
-  // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
   Modal.setAppElement('#item-reviews')
    
   class WriteRev extends React.Component {
@@ -25,7 +25,8 @@ const customStyles = {
         modalIsOpen: false,
         review: "",
         user: "",
-        title: ""
+        title: "",
+        score: 0
       };
    
       this.openModal = this.openModal.bind(this);
@@ -34,6 +35,7 @@ const customStyles = {
       this.handleReview = this.handleReview.bind(this);
       this.handleUser = this.handleUser.bind(this);
       this.handleTitle = this.handleTitle.bind(this);
+      this.ratingChanged = this.ratingChanged.bind(this)
     }
    
     openModal() {
@@ -60,6 +62,9 @@ const customStyles = {
     handleTitle(event) {
         this.setState({title: event.target.value});
     }
+    ratingChanged (newRating) {
+      this.setState({ score: newRating})
+    }
 
     render() {
       return (
@@ -77,7 +82,7 @@ const customStyles = {
             <center><h2 id="newReviewTitle" >Write Review</h2></center>
             <br></br>
             <form onSubmit={() => {
-                this.props.handleSubmit(this.state.review, this.state.user, this.state.title) 
+                this.props.handleSubmit(this.state.review, this.state.user, this.state.title, this.state.score) 
                 .then(() => this.closeModal() )    
             }}>
 
@@ -85,6 +90,14 @@ const customStyles = {
               <br></br>
               <input id="userName" placeholder="Title" value={this.state.title} onChange={this.handleTitle} />
             <br></br>
+            <ReactStars
+            onChange={this.ratingChanged}
+            count={5}
+            value={this.state.score}
+            size={20}
+            color1={'#C3C3C2'}
+            color2={'#E8952A'} 
+            />
               <input id="reviewForm" placeholder="Review..." value={this.state.review} onChange={this.handleReview} />
             <br></br>
             <center><input type="submit" value="Submit"/></center>
