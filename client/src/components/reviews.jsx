@@ -17,10 +17,9 @@ const Reviews = (props) => {
             count={5}
             value={score}
             size={20}
-            color1={'#C3C3C2'}
+            color1={'#ECEBEB'}
             color2={'#E8952A'} 
             />
-                <br></br>
                 <font > by: </font>
                 <a href="" className="linksR">{review.name}</a>
                 <br></br>
