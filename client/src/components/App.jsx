@@ -6,6 +6,7 @@ import WriteRev from './WriteReview.jsx'
 import Rankings from './Rankings.jsx'
 import SeeReviews from './seeReviews.jsx'
 import Reviews from './reviews.jsx'
+// import { array } from '../../../../../../Library/Caches/typescript/3.5/node_modules/@types/prop-types';
 
 class App extends React.Component {
   constructor () {
@@ -13,29 +14,33 @@ class App extends React.Component {
     this.state = {
       id: 0,
       reviews: [],
-      showModal: false
+      showModal: false,
+      avgScore: 0
     }
     this.getItem = this.getItem.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
-    const self = this
-    axios.get(`http://ec2-52-15-94-164.us-east-2.compute.amazonaws.com:3004/id/${self.state.id}`)
-      .then(function (response) {
-      self.setState({ reviews: response.data})
+    axios.get(`http://ec2-52-15-94-164.us-east-2.compute.amazonaws.com:3004/id/${this.state.id}`)
+    .then((response) => {
+      this.setState({ reviews: response.data })
     })
-      .catch(function (error) {
+    .then(() => {
+        this.averageScoreCalc(this.state.reviews)
+    })
+    .catch((error) => {
       console.log(error)
-    })
+    });
+
     document.addEventListener('setCurrentItem', data => {
-      self.setState({id : data.detail.id})
+      this.setState({ id : data.detail.id })
       this.getItem()
     });
   }
 
 
-  handleSubmit (newReview,newUser,newTitle) {
+  handleSubmit (newReview,newUser,newTitle, newScore) {
     event.preventDefault()
     const d = new Date();
     const presDate = d.toLocaleDateString();
@@ -44,7 +49,8 @@ class App extends React.Component {
       title: newTitle,
       review: newReview,
       name: newUser,
-      date: presDate
+      date: presDate,
+      score: newScore
       }
     return this.postReview(toSend) 
       .then(() => {
@@ -63,17 +69,29 @@ class App extends React.Component {
     .catch(function (error) {
       console.log(error)
     })
-}
+  }
 
   getItem() {
-    const self = this
-    axios.get(`http://ec2-52-15-94-164.us-east-2.compute.amazonaws.com:3004/id/${self.state.id}`)
-    .then(function (response) {
-    self.setState({ reviews: response.data})
-  })
+     return axios.get(`http://ec2-52-15-94-164.us-east-2.compute.amazonaws.com:3004/id/${this.state.id}`)
+      .then((response) => {
+        this.setState({ reviews: response.data})
+      })
+      .then(() => {
+        this.averageScoreCalc(this.state.reviews)
+      })
     .catch(function (error) {
-    console.log(error)
+      console.log(error)
   })
+}
+
+  averageScoreCalc (arr) {
+    let count = arr.length;
+    let totalscore = 0
+    for (let i=0; i < arr.length; i++) {
+      totalscore += arr[i].score
+    }
+    const result = Math.round((totalscore/count) * 10) / 10
+    this.setState({avgScore: result})
   }
 
 
@@ -90,7 +108,7 @@ class App extends React.Component {
       </div>
       <hr></hr>
       <br></br>
-      <div><Rankings /></div>
+      <div><Rankings avgScore={this.state.avgScore} numRev={this.state.reviews.length}/></div>
       <hr></hr>
       <div className="containerR">
       <div id="subtitleR" >Most Relevant Reviews</div>

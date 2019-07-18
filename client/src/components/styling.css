@@ -119,6 +119,17 @@
 
 
 /* styling for graphical elements */
+
+#numAvg {
+  font-size: 64px;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 166%;
+  color: #555;
+  font-weight: 100;
+  font-family: Courier New;
+}
+
 #totalR {
   width: 60%
 }
