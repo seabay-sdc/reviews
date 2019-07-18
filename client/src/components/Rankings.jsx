@@ -26,15 +26,15 @@ const Rankings = (props) => (
 
         </div>
         <div className="oneColR" id="graphBarsR">
-            <ProgressBar variant="warning" now={40} label={`5 Star`}  />
+            <ProgressBar  now={40} label={`5 Star`}  />
             <br></br>
-            <ProgressBar variant="warning" now={20} label={`4 Star`} />
+            <ProgressBar  now={20} label={`4 Star`} />
             <br></br>
-            <ProgressBar variant="warning" now={60} label={`3 Star`}  />
+            <ProgressBar  now={60} label={`3 Star`}  />
             <br></br>
-            <ProgressBar variant="warning" now={80} label={`2 Star`} />
+            <ProgressBar  now={80} label={`2 Star`} />
             <br></br>
-            <ProgressBar variant="warning"now={80} label={`1 Star`} />
+            <ProgressBar  now={80} label={`1 Star`} />
         </div>
         <div className="oneColR">
 

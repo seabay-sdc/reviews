@@ -156,11 +156,12 @@
   padding: 15px
 }
 
-.pbarR {
+/* .pbarR {
   background-color: #ECEBEB !important
-}
-.progress-bar-pbar {
-  background-color: #B6B0B0 !important;
+} */
+
+.progress-bar {
+  background-color: #B6B0B0!important;
   color: #B6B0B0 !important;
 }
 
