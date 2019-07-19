@@ -134,7 +134,6 @@ class App extends React.Component {
     const result = ((totalscore/count) * 10) / 10
     let answer = result.toFixed(1)
     // answer = parseInt(answer)
-    console.log(answer)
     this.setState({avgScore: answer})
   }
 
@@ -165,7 +164,6 @@ class App extends React.Component {
       totalscore += arr[i].goodQuality
     }
     const result = Math.round((totalscore/count) * 100)
-    console.log(result)
     this.setState({avgGoodQual: result})
   }
 //average score calculators END

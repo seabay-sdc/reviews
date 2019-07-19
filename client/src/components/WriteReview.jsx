@@ -24,7 +24,7 @@ const customStyles = {
       this.state = {
         modalIsOpen: false,
         review: "",
-        user: "anonymous",
+        user: "",
         title: "",
         score: 1
       };
@@ -70,25 +70,26 @@ const customStyles = {
         <div id="buttonTile">
           <button id="buttonR"onClick={this.openModal}>Write Review</button>
           <Modal
-            isOpen={this.state.modalIsOpen}
-            onAfterOpen={this.afterOpenModal}
-            onRequestClose={this.closeModal}
-            style={customStyles}
-            contentLabel="Example Modal"
-            size="lg"
+              isOpen={this.state.modalIsOpen}
+              onAfterOpen={this.afterOpenModal}
+              onRequestClose={this.closeModal}
+              style={customStyles}
+              contentLabel="Example Modal"
+              size="lg"
           >
-            <div ref={subtitle => this.subtitle = subtitle}></div>
-            <center><h2 id="newReviewTitle" >Write Review</h2></center>
+          <div ref={subtitle => this.subtitle = subtitle}></div>
+          <center><h2 id="newReviewTitle" >Write Review</h2></center>
             <br></br>
+          <div id="reviewContainerR">
             <form onSubmit={() => {
                 this.props.handleSubmit(this.state.review, this.state.user, this.state.title, this.state.score) 
                 .then(() => this.closeModal() )    
             }}>
 
-              <input id="userName" placeholder="User Name" value={this.state.user} onChange={this.handleUser} />
-              <br></br>
-              <input id="userName" placeholder="Title" value={this.state.title} onChange={this.handleTitle} />
-            <br></br>
+            <input id="userName" placeholder="User Name" value={this.state.user} onChange={this.handleUser} />
+                  <br></br>
+            <input id="userName" placeholder="Title" value={this.state.title} onChange={this.handleTitle} />
+                <br></br>
             <ReactStars
             onChange={this.ratingChanged}
             count={5}
@@ -98,11 +99,35 @@ const customStyles = {
             color2={'#E8952A'} 
             half={false}
             />
-              <textarea rows="7" cols="60" wrap="hard" id="reviewForm" placeholder="Review..." value={this.state.review} onChange={this.handleReview} />
+            <div className= "recContainer" >
+              <div className= "recCol">
+                <select name="woulRec" form="woulRec">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+                </select>
+              </div>
+              <div className= "recCol">
+                <div></div>
+                <select name="woulRec" form="woulRec">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+                </select>
+              </div>
+              <div className= "recCol">
+                <select name="woulRec" form="woulRec">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+                </select>
+              </div>
+            </div>
+            
             <br></br>
+            <textarea rows="7" cols="60" wrap="hard" id="reviewForm" placeholder="Review..." value={this.state.review} onChange={this.handleReview} />
+                <br></br>
             <center><input type="submit" value="Submit"/></center>
             </form>
-          </Modal>
+          </div>
+        </Modal>
         </div>
       );
     }
