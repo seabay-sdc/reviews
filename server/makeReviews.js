@@ -13,6 +13,9 @@ const makeData = (callback) => {
     hold["score"] = randomNum()
     hold["review"] = faker.company.catchPhraseAdjective() + " " + faker.company.catchPhraseNoun() + " " +
     faker.company.bs() + " " + faker.company.bsAdjective()
+    hold["wouldRecommend"] = Math.round(Math.random() + .3) 
+    hold["goodValue"] = Math.round(Math.random() + .3)
+    hold["goodQuality"] = Math.round(Math.random() + .3)
     data.push(hold)
   }
   callback(null, data)
@@ -27,13 +30,16 @@ function dateMaker () {
 }
 
 function randomNum () {
-  const num = Math.round(Math.random()*5)
-  if (num !==0 ) {
-    return num
+  const num = Math.round((Math.random()+.3)*5)
+  if (num ===0 ) {
+    return 1
+  } else if (num>5) {
+    return 5;
   } else {
-    return 1;
+    return num;
   }
 }
+
 
 module.exports = {
     makeData

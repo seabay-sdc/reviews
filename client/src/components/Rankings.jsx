@@ -2,6 +2,8 @@ import React from 'react';
 import './styling.css';
 import ReactStars from 'react-stars'
 import ProgressBar from 'react-bootstrap/ProgressBar'
+import { CircularProgressbar } from 'react-circular-progressbar';
+
 
 const Rankings = (props) => (
     
@@ -81,7 +83,7 @@ const Rankings = (props) => (
             <br></br>
             <ProgressBar  now={(props.tally[2]*100)/props.numRev}  />
             <br></br>
-            <ProgressBar  now={(props.tally[5]*100)/props.numRev}  />
+            <ProgressBar  now={(props.tally[1]*100)/props.numRev}  />
         </div>
         <div id = "colRatingRows" className="oneColR">
             <div className="ratingRowName">{props.tally[5]}</div>
@@ -91,8 +93,23 @@ const Rankings = (props) => (
             <div className="ratingRowName">{props.tally[1]}</div>
         </div>
         <div className="oneColR">
-        3
-                
+        {/* break for between 2nd and 3rd element */}
+        </div>
+        <div className="oneColR">
+        <CircularProgressbar value={props.wouldRec} text={`${props.wouldRec}%`} />
+        <br></br>
+        <div className="piegraphText">Would recommend</div>
+        </div>
+        <div className="oneColR"> {/* break between colonm */} </div>
+        <div className="oneColR">
+        <CircularProgressbar value={props.goodVal} text={`${props.goodVal}%`} />
+        <br></br>
+        <div className= "piegraphText">Good Value</div>
+        </div>
+        <div className="oneColR"> {/* break between colonm */} </div>
+        <div className="oneColR">
+        <CircularProgressbar value={props.goodQual} text={`${props.goodQual}%`} />
+        <div className= "piegraphText">Good Quality</div>
         </div>
     </div>
   );

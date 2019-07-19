@@ -6,6 +6,7 @@ import WriteRev from './WriteReview.jsx'
 import Rankings from './Rankings.jsx'
 import SeeReviews from './seeReviews.jsx'
 import Reviews from './reviews.jsx'
+
 // import { array } from '../../../../../../Library/Caches/typescript/3.5/node_modules/@types/prop-types';
 
 class App extends React.Component {
@@ -15,7 +16,10 @@ class App extends React.Component {
       id: 0,
       reviews: [],
       showModal: false,
-      avgScore: 0,
+      avgScore: "",
+      avgWouldRec: 0,
+      avgGoodVal: 0,
+      avgGoodQual:0,
       reviewObj: []
     }
     this.getItem = this.getItem.bind(this)
@@ -33,6 +37,15 @@ class App extends React.Component {
     })
     .then(() => {
       this.scoreCount(this.state.reviews)
+    })
+    .then(() => {
+      this.wouldRecAvg(this.state.reviews)
+    })
+    .then(() => {
+      this.goodValAvg(this.state.reviews)
+    })
+    .then(() => {
+      this.goodQualAvg(this.state.reviews)
     })
     .then(() => {
       this.setCurrentReview(this.state.avgScore)
@@ -66,7 +79,7 @@ class App extends React.Component {
       })
   }
 
- postReview(newRev) {
+  postReview(newRev) {
     return axios.post(`http://ec2-52-15-94-164.us-east-2.compute.amazonaws.com:3004/newReview`,{
     newRev})
     .then(function(response){
@@ -87,6 +100,15 @@ class App extends React.Component {
         this.averageScoreCalc(this.state.reviews)
       })
       .then(() => {
+        this.wouldRecAvg(this.state.reviews)
+      })
+      .then(() => {
+        this.goodValAvg(this.state.reviews)
+      })
+      .then(() => {
+        this.goodQualAvg(this.state.reviews)
+      })
+      .then(() => {
         this.scoreCount(this.state.reviews)
       })
       .then(() => {
@@ -94,24 +116,60 @@ class App extends React.Component {
       })
     .catch(function (error) {
       console.log(error)
-  })
-}
+    })
+  }
 
-setCurrentReview (score) {
-  const averageScore = { averageScore: { score } };
-  const event = new CustomEvent('setCurrentScore', averageScore);
-  document.dispatchEvent(event);
-}
-
+  setCurrentReview (score) {
+    const averageScore = { averageScore: { score } };
+    const event = new CustomEvent('setCurrentScore', averageScore);
+    document.dispatchEvent(event);
+  }
+//average score calculators
   averageScoreCalc (arr) {
     let count = arr.length;
     let totalscore = 0
     for (let i=0; i < arr.length; i++) {
       totalscore += arr[i].score
     }
-    const result = Math.round((totalscore/count) * 10) / 10
-    this.setState({avgScore: result})
+    const result = ((totalscore/count) * 10) / 10
+    let answer = result.toFixed(1)
+    // answer = parseInt(answer)
+    console.log(answer)
+    this.setState({avgScore: answer})
   }
+
+  wouldRecAvg (arr) {
+    let count = arr.length;
+    let totalscore = 0
+    for (let i=0; i < arr.length; i++) {
+      totalscore += arr[i].wouldRecommend
+    }
+    const result = Math.round((totalscore/count) * 100)
+    this.setState({avgWouldRec: result})
+  }
+
+  goodValAvg (arr) {
+    let count = arr.length;
+    let totalscore = 0
+    for (let i=0; i < arr.length; i++) {
+      totalscore += arr[i].goodValue
+    }
+    const result = Math.round((totalscore/count) * 100)
+    this.setState({avgGoodVal: result})
+  }
+
+  goodQualAvg (arr) {
+    let count = arr.length;
+    let totalscore = 0
+    for (let i=0; i < arr.length; i++) {
+      totalscore += arr[i].goodQuality
+    }
+    const result = Math.round((totalscore/count) * 100)
+    console.log(result)
+    this.setState({avgGoodQual: result})
+  }
+//average score calculators END
+
 
   scoreCount (arr) {
     const scoreTally = [{1:0,2:0,3:0,4:0,5:0}]
@@ -163,7 +221,8 @@ setCurrentReview (score) {
       </div>
       <hr></hr>
       <br></br>
-      <div><Rankings tally={this.state.reviewObj} avgScore={this.state.avgScore} numRev={this.state.reviews.length}/></div>
+      <div><Rankings tally={this.state.reviewObj} avgScore={this.state.avgScore} numRev={this.state.reviews.length}
+      wouldRec={this.state.avgWouldRec} goodVal={this.state.avgGoodVal}  goodQual={this.state.avgGoodQual} /></div>
       <hr></hr>
       <div className="containerR">
       <div id="subtitleR" >Most Relevant Reviews</div>
