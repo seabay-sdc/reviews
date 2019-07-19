@@ -12,7 +12,7 @@ const Reviews = (props) => {
             const score = review.score
             return (
             <>
-            <div className="userR">
+            <div>
             <ReactStars
                 count={5}
                 value={score}
