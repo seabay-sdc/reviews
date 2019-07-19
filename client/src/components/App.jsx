@@ -98,8 +98,8 @@ class App extends React.Component {
 }
 
 setCurrentReview (score) {
-  const detail = { detail: { score } };
-  const event = new CustomEvent('setCurrentScore', detail);
+  const averageScore = { averageScore: { score } };
+  const event = new CustomEvent('setCurrentScore', averageScore);
   document.dispatchEvent(event);
 }
 
