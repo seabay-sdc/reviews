@@ -50,6 +50,7 @@
     "path": "^0.12.7",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.9",
+    "react-circular-progressbar": "^2.0.1",
     "react-dom": "^16.8.6",
     "react-modal": "^3.9.1",
     "react-native-button": "^2.4.0",

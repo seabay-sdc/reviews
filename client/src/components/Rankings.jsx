@@ -2,6 +2,8 @@ import React from 'react';
 import './styling.css';
 import ReactStars from 'react-stars'
 import ProgressBar from 'react-bootstrap/ProgressBar'
+import { CircularProgressbar } from 'react-circular-progressbar';
+
 
 const Rankings = (props) => (
     
@@ -90,10 +92,22 @@ const Rankings = (props) => (
             <div className="ratingRowName">{props.tally[2]}</div>
             <div className="ratingRowName">{props.tally[1]}</div>
         </div>
+        {/* <div id="circleRankDiv" className="oneColR"> */}
         <div className="oneColR">
-        3
-                
+        {/* break for between 2nd and 3rd element */}
         </div>
+        <div className="oneColR">
+        <CircularProgressbar value={55} text={`${55}%`} />
+        </div>
+        <div className="oneColR"> {/* break between colonm */} </div>
+        <div className="oneColR">
+        <CircularProgressbar value={55} text={`${55}%`} />
+        </div>
+        <div className="oneColR"> {/* break between colonm */} </div>
+        <div className="oneColR">
+        <CircularProgressbar value={55} text={`${55}%`} />
+        </div>
+        {/* </div> */}
     </div>
   );
 
