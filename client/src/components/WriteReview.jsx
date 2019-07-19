@@ -24,9 +24,9 @@ const customStyles = {
       this.state = {
         modalIsOpen: false,
         review: "",
-        user: "",
+        user: "anonymous",
         title: "",
-        score: 0
+        score: 1
       };
    
       this.openModal = this.openModal.bind(this);
@@ -43,7 +43,6 @@ const customStyles = {
     }
    
     afterOpenModal() {
-      // references are now sync'd and can be accessed.
       this.subtitle.style.color = '#f00';
     }
    
@@ -97,8 +96,9 @@ const customStyles = {
             size={20}
             color1={'#C3C3C2'}
             color2={'#E8952A'} 
+            half={false}
             />
-              <input id="reviewForm" placeholder="Review..." value={this.state.review} onChange={this.handleReview} />
+              <textarea rows="7" cols="60" wrap="hard" id="reviewForm" placeholder="Review..." value={this.state.review} onChange={this.handleReview} />
             <br></br>
             <center><input type="submit" value="Submit"/></center>
             </form>

@@ -14,16 +14,17 @@ const Reviews = (props) => {
             <>
             <div className="userR">
             <ReactStars
-            count={5}
-            value={score}
-            size={20}
-            color1={'#ECEBEB'}
-            color2={'#E8952A'} 
+                count={5}
+                value={score}
+                size={20}
+                color1={'#ECEBEB'}
+                color2={'#E8952A'} 
+                edit={false}
             />
-                <font > by: </font>
+            <font > by: </font>
                 <a href="" className="linksR">{review.name}</a>
                 <br></br>
-                <font color="grey">{review.date} </font>
+            <font color="B6B0B0">{review.date} </font>
             </div>
             <div className="reviewR">
                 <div className="titleR"> {review.title} </div>

@@ -3,11 +3,10 @@ import './styling.css';
 import ReactStars from 'react-stars'
 import ProgressBar from 'react-bootstrap/ProgressBar'
 
-
 const Rankings = (props) => (
+    
     <div className="reviewSumR">
-        {/* <div className="oneColR">1</div> */}
-        <div className="oneColR">
+        <div id="mainSumReview" className="oneColR">
             <center><h3 id="numAvg">{props.avgScore}</h3>
             <div id="reactStars"><ReactStars
                 count={5}
@@ -15,33 +14,85 @@ const Rankings = (props) => (
                 size={24}
                 color1={'#ECEBEB'}
                 color2={'#E8952A'} 
+                edit={false}
             /></div>
             <br></br>
-            <h5>{props.numRev} Product Rankings</h5></center>
+            <br></br>
+            <h5 id="rankingCount">{props.numRev} Product Rankings</h5></center>
         </div>
-        {/* <div className="oneColR">2</div> */}
-        {/* <img id="starFillR" src="https://i.imgur.com/jH8EcjX.png"></img> */}
-        <div className="oneColR">
+        <div id= "colRatingRows" className="oneColR">
+        <ReactStars
+            count={1}
+            vale={1}
+            size={12}
+            color1={'#767676'}
+            color2={'#767676'} 
+            edit={false} 
+        />
+        <ReactStars
+            count={1}
+            vale={1}
+            size={12}
+            color1={'#767676'}
+            color2={'#767676'} 
+            edit={false} 
+        />
+        <ReactStars
+            count={1}
+            vale={1}
+            size={12}
+            color1={'#767676'}
+            color2={'#767676'} 
+            edit={false} 
+        />
+        <ReactStars
+            count={1}
+            vale={1}
+            size={12}
+            color1={'#767676'}
+            color2={'#767676'} 
+            edit={false} 
+        />
+        <ReactStars
+            count={1}
+            vale={1}
+            size={12}
+            color1={'#767676'}
+            color2={'#767676'} 
+            edit={false} 
+        />
+        </div>
+        <div id = "colRatingRows" className="oneColR">
 
+            <div className="ratingRowName">5</div>
+            <div className="ratingRowName">4</div>
+            <div className="ratingRowName">3</div>
+            <div className="ratingRowName">2</div>
+            <div className="ratingRowName">1</div>
 
         </div>
         <div className="oneColR" id="graphBarsR">
-            <ProgressBar  now={40} label={`5 Star`}  />
+            <ProgressBar  now={(props.tally[5]*100)/props.numRev}  />
             <br></br>
-            <ProgressBar  now={20} label={`4 Star`} />
+            <ProgressBar  now={(props.tally[4]*100)/props.numRev}  />
             <br></br>
-            <ProgressBar  now={60} label={`3 Star`}  />
+            <ProgressBar  now={(props.tally[3]*100)/props.numRev}   />
             <br></br>
-            <ProgressBar  now={80} label={`2 Star`} />
+            <ProgressBar  now={(props.tally[2]*100)/props.numRev}  />
             <br></br>
-            <ProgressBar  now={80} label={`1 Star`} />
+            <ProgressBar  now={(props.tally[5]*100)/props.numRev}  />
+        </div>
+        <div id = "colRatingRows" className="oneColR">
+            <div className="ratingRowName">{props.tally[5]}</div>
+            <div className="ratingRowName">{props.tally[4]}</div>
+            <div className="ratingRowName">{props.tally[3]}</div>
+            <div className="ratingRowName">{props.tally[2]}</div>
+            <div className="ratingRowName">{props.tally[1]}</div>
         </div>
         <div className="oneColR">
-
-
+        3
+                
         </div>
-        <div className="oneColR">3</div>
-        {/* <img id="threePieR" src="https://i.imgur.com/Svm5WVP.png"></img> */}
     </div>
   );
 

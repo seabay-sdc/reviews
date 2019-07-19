@@ -15,7 +15,8 @@ class App extends React.Component {
       id: 0,
       reviews: [],
       showModal: false,
-      avgScore: 0
+      avgScore: 0,
+      reviewObj: []
     }
     this.getItem = this.getItem.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -24,10 +25,14 @@ class App extends React.Component {
   componentDidMount() {
     axios.get(`http://ec2-52-15-94-164.us-east-2.compute.amazonaws.com:3004/id/${this.state.id}`)
     .then((response) => {
-      this.setState({ reviews: response.data })
+      const sortedReview = this.mergeSort(response.data)
+      this.setState({ reviews: sortedReview })
     })
     .then(() => {
         this.averageScoreCalc(this.state.reviews)
+    })
+    .then(() => {
+      this.scoreCount(this.state.reviews)
     })
     .catch((error) => {
       console.log(error)
@@ -74,10 +79,14 @@ class App extends React.Component {
   getItem() {
      return axios.get(`http://ec2-52-15-94-164.us-east-2.compute.amazonaws.com:3004/id/${this.state.id}`)
       .then((response) => {
-        this.setState({ reviews: response.data})
+        const sortedReview = this.mergeSort(response.data)
+        this.setState({ reviews: sortedReview})
       })
       .then(() => {
         this.averageScoreCalc(this.state.reviews)
+      })
+      .then(() => {
+        this.scoreCount(this.state.reviews)
       })
     .catch(function (error) {
       console.log(error)
@@ -94,7 +103,43 @@ class App extends React.Component {
     this.setState({avgScore: result})
   }
 
+  scoreCount (arr) {
+    const scoreTally = [{1:0,2:0,3:0,4:0,5:0}]
+    for (let i =0; i < arr.length; i++) {
+      scoreTally[0][arr[i].score]++
+    }
+    this.setState({ reviewObj : scoreTally[0] })
+  }
 
+  mergeSort (arr) {
+    if (arr.length <= 1) return arr;
+    var mid = Math.floor(arr.length/2);
+    var left = this.mergeSort(arr.slice(0,mid));
+    var right = this.mergeSort(arr.slice(mid));
+    return this.merge(left, right);
+  };
+  
+   merge (arr1, arr2) {
+    var result = [];
+    let i = 0;
+    let x = 0;
+    while (i < arr1.length && x < arr2.length) {
+      if (arr2[x].date < arr1[i].date) {
+        result.push(arr1[i]);
+        i++
+      } else {
+        result.push(arr2[x]);
+        x++
+      } 
+    } while (i <arr1.length) {
+      result.push(arr1[i])
+      i++
+    } while (x< arr2.length) {
+      result.push(arr2[x]) 
+        x++
+    }
+    return result;
+  }
 
 
   render () {
@@ -108,7 +153,7 @@ class App extends React.Component {
       </div>
       <hr></hr>
       <br></br>
-      <div><Rankings avgScore={this.state.avgScore} numRev={this.state.reviews.length}/></div>
+      <div><Rankings tally={this.state.reviewObj} avgScore={this.state.avgScore} numRev={this.state.reviews.length}/></div>
       <hr></hr>
       <div className="containerR">
       <div id="subtitleR" >Most Relevant Reviews</div>
