@@ -33,8 +33,9 @@
   }
 
   #reviewForm {
-    width: 500px;
-    height: 5em;
+    rows:5;
+    cols:50;
+    wrap:hard;
   }
 
   #newReviewTitle {
@@ -109,21 +110,22 @@
     color: #B6B0B0;
   }
 
-.linksR {
-  color:#5A82C7;
-  font-size: 14px;
-  font-weight: bold;
-  text-decoration: none
-}
+  .linksR {
+    color:#5A82C7;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none
+  }
 
 
 /* styling for graphical elements */
 
 .reviewSumR {
   display: grid;
-  grid-template-columns: .75fr .10fr 1fr .10fr 1fr;
+  grid-template-columns: .35fr .02fr .015fr .35fr .015fr .5fr;
+  max-width: 60%;
   line-height: 20px; 
-  border: 1px solid black; 
+  /* border: 1px solid black;  */
   grid-template-rows: auto;
   display: grid;
   height: auto;
@@ -131,9 +133,29 @@
 }
 
 .oneColR {
-  border: 1px solid black; 
+  /* border: 1px solid black;  */
   margin-right: auto;
   margin: 1px
+}
+
+/* Summary Rating Reviews Col 1 */
+
+#mainSumReview {
+  padding-left: 15%;
+  padding-right: 15%;
+  text-align: center;
+}
+#reactStars {
+  padding-left: 2.65%;
+  position: absolute
+
+}
+
+#rankingCount {
+  color: #767676;
+  font-size: 12px;
+  font-size: 12px;
+  font-family: Helvetica
 }
 
 #numAvg {
@@ -142,41 +164,46 @@
   line-height: 100%;
   color: #555;
   font-weight: 100;
-  font-family: Courier New;
+  font-family: Helvetica
 }
 
-#reactStars {
-  padding-left: 30%;
+
+
+
+/* CSS for Column of row names for 1-5 + stars */
+.ratingRowName {
+  font-size: 12px;
+  color: #767676;
+}
+
+#colRatingRows {
+  line-height: 26px;
+  padding-top: 10px
 }
 
 /* the five bars rendering the total amount votes per count */
 
 #graphBarsR {
   line-height: 10px;
-  padding: 15px
+  padding-right: 5px;
+  padding-top: 15px;
+  padding-bottom: 15px
 }
 
-/* .pbarR {
-  background-color: #ECEBEB !important
-} */
 
 .progress-bar {
   background-color: #B6B0B0!important;
   color: #B6B0B0 !important;
 }
 
-#totalR {
-  width: 60%
-}
-#starFillR {
-  width: 60%;
-}
 
-#threePieR {
-  padding-top: 40px;
-  padding-bottom: 10px;
-  width: 100%
-}
+/* CSS row tally count {1:2,2:3,.....*/
+
+
+
+
+
+
 
 
 
