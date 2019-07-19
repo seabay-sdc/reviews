@@ -34,6 +34,9 @@ class App extends React.Component {
     .then(() => {
       this.scoreCount(this.state.reviews)
     })
+    .then(() => {
+      this.setCurrentReview(this.state.avgScore)
+    })
     .catch((error) => {
       console.log(error)
     });
@@ -63,8 +66,6 @@ class App extends React.Component {
       })
   }
 
-
-
  postReview(newRev) {
     return axios.post(`http://ec2-52-15-94-164.us-east-2.compute.amazonaws.com:3004/newReview`,{
     newRev})
@@ -88,9 +89,18 @@ class App extends React.Component {
       .then(() => {
         this.scoreCount(this.state.reviews)
       })
+      .then(() => {
+        this.setCurrentReview(this.state.avgScore)
+      })
     .catch(function (error) {
       console.log(error)
   })
+}
+
+setCurrentReview (score) {
+  const detail = { detail: { score } };
+  const event = new CustomEvent('setCurrentScore', detail);
+  document.dispatchEvent(event);
 }
 
   averageScoreCalc (arr) {

@@ -7,18 +7,19 @@ const Rankings = (props) => (
     
     <div className="reviewSumR">
         <div id="mainSumReview" className="oneColR">
-            <center><h3 id="numAvg">{props.avgScore}</h3>
-            <div id="reactStars"><ReactStars
+        <h3 id="numAvg">{props.avgScore}</h3>
+            <div id="reactStars">
+                <ReactStars
                 count={5}
                 value={props.avgScore}
                 size={24}
                 color1={'#ECEBEB'}
                 color2={'#E8952A'} 
                 edit={false}
+            
             /></div>
             <br></br>
-            <br></br>
-            <h5 id="rankingCount">{props.numRev} Product Rankings</h5></center>
+            <h5 id="rankingCount">{props.numRev} Product Rankings</h5>
         </div>
         <div id= "colRatingRows" className="oneColR">
         <ReactStars
