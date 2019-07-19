@@ -19,6 +19,7 @@ const Reviews = (props) => {
             size={20}
             color1={'#ECEBEB'}
             color2={'#E8952A'} 
+            edit={false} 
             />
                 <font > by: </font>
                 <a href="" className="linksR">{review.name}</a>
@@ -34,14 +35,6 @@ const Reviews = (props) => {
         })}
     </div>
     )
-}
-
-function makeScore (item) {
-    for (let i = 1; i < 5; i++) {
-        if (item === i) {
-            return i + 0
-        }
-    }
 }
 
 

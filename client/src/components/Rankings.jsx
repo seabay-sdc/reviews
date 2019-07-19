@@ -83,7 +83,7 @@ const Rankings = (props) => (
             <br></br>
             <ProgressBar  now={(props.tally[2]*100)/props.numRev}  />
             <br></br>
-            <ProgressBar  now={(props.tally[5]*100)/props.numRev}  />
+            <ProgressBar  now={(props.tally[1]*100)/props.numRev}  />
         </div>
         <div id = "colRatingRows" className="oneColR">
             <div className="ratingRowName">{props.tally[5]}</div>
@@ -92,22 +92,25 @@ const Rankings = (props) => (
             <div className="ratingRowName">{props.tally[2]}</div>
             <div className="ratingRowName">{props.tally[1]}</div>
         </div>
-        {/* <div id="circleRankDiv" className="oneColR"> */}
         <div className="oneColR">
         {/* break for between 2nd and 3rd element */}
         </div>
         <div className="oneColR">
-        <CircularProgressbar value={55} text={`${55}%`} />
+        <CircularProgressbar value={props.wouldRec} text={`${props.wouldRec}%`} />
+        <br></br>
+        <div className="piegraphText">Would recommend</div>
         </div>
         <div className="oneColR"> {/* break between colonm */} </div>
         <div className="oneColR">
-        <CircularProgressbar value={55} text={`${55}%`} />
+        <CircularProgressbar value={props.goodVal} text={`${props.goodVal}%`} />
+        <br></br>
+        <div className= "piegraphText">Good Value</div>
         </div>
         <div className="oneColR"> {/* break between colonm */} </div>
         <div className="oneColR">
-        <CircularProgressbar value={55} text={`${55}%`} />
+        <CircularProgressbar value={props.goodQual} text={`${props.goodQual}%`} />
+        <div className= "piegraphText">Good Quality</div>
         </div>
-        {/* </div> */}
     </div>
   );
 
