@@ -51,7 +51,6 @@ const addAlot = (review, callback) => {
 
 // db.collection("reviews").deleteMany()
 
-
 module.exports = {
   getAll,
   addOne,

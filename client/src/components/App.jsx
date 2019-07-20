@@ -61,7 +61,7 @@ class App extends React.Component {
   }
 
 
-  handleSubmit (newReview,newUser,newTitle, newScore) {
+  handleSubmit (newReview,newUser,newTitle, newScore, rec, val, qual) {
     event.preventDefault()
     const d = new Date();
     const presDate = d.toLocaleDateString();
@@ -71,13 +71,17 @@ class App extends React.Component {
       review: newReview,
       name: newUser,
       date: presDate,
-      score: newScore
+      score: newScore,
+      wouldRecommend: rec,
+      goodValue: val,
+      goodQuality: qual,
       }
     return this.postReview(toSend) 
       .then(() => {
         this.getItem();
       })
   }
+
 
   postReview(newRev) {
     return axios.post(`http://ec2-52-15-94-164.us-east-2.compute.amazonaws.com:3004/newReview`,{

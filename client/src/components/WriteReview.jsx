@@ -2,7 +2,8 @@ import React from 'react';
 import './styling.css';
 import Modal from 'react-modal';
 import { throws } from 'assert';
-import ReactStars from 'react-stars'
+import ReactStars from 'react-stars';
+// import console from require('console');
 
 const customStyles = {
     content : {
@@ -26,7 +27,10 @@ const customStyles = {
         review: "",
         user: "",
         title: "",
-        score: 1
+        score: 1,
+        rec: 1,
+        val: 1,
+        qual: 1
       };
    
       this.openModal = this.openModal.bind(this);
@@ -36,6 +40,10 @@ const customStyles = {
       this.handleUser = this.handleUser.bind(this);
       this.handleTitle = this.handleTitle.bind(this);
       this.ratingChanged = this.ratingChanged.bind(this)
+      this.wouldRec = this.wouldRec.bind(this)
+      this.goodVal = this.goodVal.bind(this)
+      this.goodQual = this.goodQual.bind(this)
+
     }
    
     openModal() {
@@ -65,6 +73,21 @@ const customStyles = {
       this.setState({ score: newRating})
     }
 
+    wouldRec (event) {
+      const result = parseInt(event.target.value)
+      this.setState({ rec: result})
+    }
+    
+    goodVal (event) {
+      const result = parseInt(event.target.value)
+      this.setState({ val: result})
+    }
+
+    goodQual (event) {
+      const result = parseInt(event.target.value)
+      this.setState({ qual: result})
+    }
+
     render() {
       return (
         <div id="buttonTile">
@@ -82,7 +105,8 @@ const customStyles = {
             <br></br>
           <div id="reviewContainerR">
             <form onSubmit={() => {
-                this.props.handleSubmit(this.state.review, this.state.user, this.state.title, this.state.score) 
+                this.props.handleSubmit(this.state.review, this.state.user, this.state.title, 
+                  this.state.score, this.state.rec, this.state.rec, this.state.val, this.state.qual) 
                 .then(() => this.closeModal() )    
             }}>
 
@@ -101,22 +125,24 @@ const customStyles = {
             />
             <div className= "recContainer" >
               <div className= "recCol">
-                <select name="woulRec" form="woulRec">
-                <option value="1">Yes</option>
-                <option value="0">No</option>
+              <div className="recommendationsR">Would Recommend?</div>
+                <select name="woulRec" form="woulRec" onChange={this.wouldRec} value={this.state.rec}>
+                <option value={1}>Yes</option>
+                <option value={0}>No</option>
                 </select>
               </div>
               <div className= "recCol">
-                <div></div>
-                <select name="woulRec" form="woulRec">
-                <option value="1">Yes</option>
-                <option value="0">No</option>
+              <div className="recommendationsR">Good Value?</div>
+                <select name="goodVal" form="goodVal" onChange={this.goodVal} value={this.state.val}>
+                <option value={1}>Yes</option>
+                <option value={0}>No</option>
                 </select>
               </div>
               <div className= "recCol">
-                <select name="woulRec" form="woulRec">
-                <option value="1">Yes</option>
-                <option value="0">No</option>
+              <div className="recommendationsR">Good Quality?</div>
+              <select name="goodQual" form="goodQual" onChange={this.goodQual} value={this.state.qual}>
+                <option value={1}>Yes</option>
+                <option value={0}>No</option>
                 </select>
               </div>
             </div>
