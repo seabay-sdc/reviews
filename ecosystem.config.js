@@ -11,7 +11,7 @@ module.exports = {
         ref: 'origin/master',
         repo: 'https://github.com/seabay-hratx42-fec/reviews.git',
         path: '/home/ubuntu/server/review',
-        'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js'
+        'post-deploy': 'npm install && npx webpack --config webpack.config.js && pm2 startOrRestart ecosystem.config.js'
       }
     }
   }
