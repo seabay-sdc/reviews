@@ -11,11 +11,13 @@ const bodyParser = require("body-parser");
 const path = require('path');
 const db = require("../db/config.js")
 const data = require("./makeReviews.js")
+const compression = require('compression')
 
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(compression())
 
 app.use(express.static('client/dist'));
 
