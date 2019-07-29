@@ -1,6 +1,7 @@
 require('dotenv').config();
 const faker = require('faker');
 const express = require('express');
+const fs = require('fs');
 
 const data = []
 const makeData = (callback) => {
@@ -20,6 +21,18 @@ const makeData = (callback) => {
   }
   callback(null, data)
 }
+
+// const makeData2 = () => {
+//   console.time('timer')
+//   let string = 'id,name,date,title,score,review,wouldRecommend,goodValue,goodQuality\n'
+//   for (let i=9000000; i < 10000000; i++) {
+//     string += `${i},${faker.name.findName()},${dateMaker()},${faker.company.catchPhrase()},${randomNum()},${faker.company.catchPhraseAdjective() + " " + faker.company.catchPhraseNoun() + " " + faker.company.bs() + " " + faker.company.bsAdjective()},${Math.round(Math.random() + .3)},${Math.round(Math.random() + .3)},${Math.round(Math.random() + .3)}\n`
+//   }
+//   fs.appendFile('./server/seed.csv',string,(err) => {
+//     if(err) {console.log(err)}
+//     else {console.timeEnd('timer')}
+//   })
+// }
 
 function dateMaker () {
   let date = faker.date.past()
@@ -42,5 +55,6 @@ function randomNum () {
 
 
 module.exports = {
-    makeData
+    makeData,
+    //makeData2
 }

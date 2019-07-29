@@ -72,3 +72,5 @@ typings/
 
 # ignore bundle
 bundle.js
+
+server/seed.csv

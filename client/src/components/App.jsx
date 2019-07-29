@@ -27,7 +27,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://ec2-52-15-94-164.us-east-2.compute.amazonaws.com:3004/id/${this.state.id}`)
+    axios.get(`localhost:3002/id/${this.state.id}`)
     .then((response) => {
       const sortedReview = this.mergeSort(response.data)
       this.setState({ reviews: sortedReview })
@@ -84,7 +84,7 @@ class App extends React.Component {
 
 
   postReview(newRev) {
-    return axios.post(`http://ec2-52-15-94-164.us-east-2.compute.amazonaws.com:3004/newReview`,{
+    return axios.post(`localhost:3002/newReview`,{
     newRev})
     .then(function(response){
       console.log('sent')
@@ -95,7 +95,7 @@ class App extends React.Component {
   }
 
   getItem() {
-     return axios.get(`http://ec2-52-15-94-164.us-east-2.compute.amazonaws.com:3004/id/${this.state.id}`)
+     return axios.get(`localhost:3002/id/${this.state.id}`)
       .then((response) => {
         const sortedReview = this.mergeSort(response.data)
         this.setState({ reviews: sortedReview})
